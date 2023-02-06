@@ -4,14 +4,32 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="styling.css" />
 		<title>Library Project</title>
 	</head>
 	<body>
 		<main>
-			<button class="newBook">NEW BOOK</button>
-            <form> 
+			<button class="newBook" id="newBook">NEW BOOK</button>
+			<div class="formPopup" id="popupForm">
+				<form>
+					<input
+						type="text"
+						id="title"
+						placeholder="Your book title"
+						name="title"
+						required
+					/>
+				</form>
+			</div>
+			<p>${book.reportInfo()}</p>
+			<button class="removeBookButton" data-key="${book.title}">Remove</button>
+			<button class="changeReadStatus" data-key="${book.title}">
+				${ book.read } read
+			</button>
 
-            </form>
+			<h2>Your books:</h2>
+			<div class="bookDisplay"></div>
 		</main>
+		<script src="Project-Library.js"></script>
 	</body>
 </html>
