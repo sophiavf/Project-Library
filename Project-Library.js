@@ -16,6 +16,7 @@ function addBookToLibrary(title, author, pages, read) {
 	let book = new Book(title, author, pages, read);
 	this.book = book;
 	myLibrary.push(book);
+	displayBooks;
 }
 
 const libraryDisplay = document.querySelector(".bookDisplay");
@@ -23,16 +24,37 @@ const libraryDisplay = document.querySelector(".bookDisplay");
 function displayBooks() {
 	//Loops through books
 	myLibrary.forEach((book) => {
-		let newBookElement = document.createElement("div");
-		newBookElement.innerHTML = `<p>${book.reportInfo()}</p>
-		<div class="buttons"><button class='removeBookButton' data-key='${
-			book.title
-		}'>Remove</button>
-		<button class='changeReadStatus' data-key='${book.title}'>${
-			book.read
-		} read</button></div>`;
-		newBookElement.setClass("title");
-		libraryDisplay.appendChild(newBookElement);
+		if (document.querySelector(`.${book.title}`) !== null) {
+			return;
+		} else {
+			let newBookElement = document
+				.createElement("div")
+				.classList.add(`${book.title}`);
+			let titleElement = (document.createElement("div").textContent =
+				book.title);
+			let authorElement = (document.createElement(
+				"div"
+			).textContent = `Written by ${book.author}`);
+			let pageElement = (document.createElement(
+				"div"
+			).textContent = `${book.pages} pages`);
+			let removeBookButton = document
+				.createElement("button")
+				.classList.add("removeBookButton");
+			removeBookButton.setAttribute("id", `${book.title}`);
+			let changeReadStatusButton = document
+				.createElement("button")
+				.classList.add("changeStatusButton")
+				.setAttribute("id", `${book.title}`);
+
+			newBookElement.append(
+				titleElement,
+				authorElement,
+				pageElement,
+				removeButton,
+				changeReadStatusButton
+			);
+		}
 	});
 	//Displays each book on the page
 }
@@ -47,7 +69,7 @@ newBookButton.addEventListener("click", function () {
 	popUpForm.style.display = "block";
 });
 
-//3. tUser puts inputs into form
+//3. User puts inputs into form
 //4. User submits inputs
 document
 	.querySelector(".submitButton")
@@ -56,8 +78,19 @@ document
 		getUserInput();
 		closePopUp();
 	});
-
-function getUserInput() {}
+//5. Program takes user input from form and add's it to the library
+function getUserInput() {
+	let title = document.querySelector("#title");
+	let author = document.querySelector("#author");
+	let pages = document.querySelector("#pages");
+	let read = document.querySelector("#read").value;
+	if (read === true) {
+		read = "yes";
+	} else {
+		read === "no";
+	}
+	addBookToLibrary(title, author, pages, read);
+}
 
 document.querySelector(".closeButton").addEventListener("click", closePopUp());
 
@@ -66,20 +99,41 @@ function closePopUp() {
 }
 
 //Removing a book
-var removeBookButtons = document.querySelector(".removeBookButton");
-if (removeBookButtons !== null) {
+var removeBookButtons = document.getElementsByClassName("removeBookButton");
+
+if (removeBookButtons.length > 0) {
 	removeBookButtons.forEach((button) => {
 		button.addEventListener("click", () => {
-			let bookToRemove = button.getAttribute("data-key").value;
+			let bookToRemove = button.getAttribute("id").value;
 			myLibrary.filter((book) => book.title !== bookToRemove);
 			let removeElement = document.querySelector(`.${bookToRemove}`);
-			removeElement.innerHTML = '';
-			removeElement.remove(); 
+			removeElement.innerHTML = "";
+			removeElement.remove();
 		});
 	});
 }
 
-//Changing
+//Changing the read status
+let changeStatusButtons = document.getElementsByClassName("changeStatusButton");
+if (changeStatusButtons.length > 0) {
+	changeStatusButtons.forEach((button) => {
+		button.addEventListener("click", function (e) {
+			changeReadStatus(e);
+		});
+	});
+}
+
+function changeReadStatus(event) {
+	let bookIndex = myLibrary.findIndex((book) => book.title === event.id.value);
+	let updateElement = document.querySelector(
+		`.changeStatusButton #${event.id.value}`
+	);
+	if (event.read == "yes") {
+		myLibrary[bookIndex].read = "no";
+	} else {
+		myLibrary[bookIndex].read = "yes";
+	}
+}
 
 //testing
 addBookToLibrary("Bible", "Joe", 267, "not");
