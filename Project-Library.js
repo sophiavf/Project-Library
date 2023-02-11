@@ -52,7 +52,9 @@ function displayBooks() {
 				"changeStatusButton",
 				`${book.title}`
 			);
-			// changeReadStatusButton.setAttribute("id", `${book.title}`);
+
+			removeBookButton.setAttribute("id", `${book.title}`);
+			changeReadStatusButton.setAttribute("id", `${book.title}`);
 
 			let buttons = document.createElement("div");
 			buttons.classList.add("buttons");
@@ -117,72 +119,41 @@ function closePopUp() {
 var removeBookButtons = document.getElementsByClassName("removeBookButton");
 
 function removeBook(event) {
-	let bookToRemove = event.getAttribute("id").value;
+	let bookToRemove = event.target.id;
 	myLibrary.filter((book) => book.title !== bookToRemove);
 	let removeElement = document.querySelector(`.${bookToRemove}`);
 	removeElement.innerHTML = "";
 	removeElement.remove();
 }
 
-// if (removeBookButtons.length > 0) {
-// 	removeBookButtons.forEach((button) => {
-// 		button.addEventListener("click", () => {
-// 			let bookToRemove = button.getAttribute("id").value;
-// 			myLibrary.filter((book) => book.title !== bookToRemove);
-// 			let removeElement = document.querySelector(
-// 				`.${bookToRemove}.bookContainer`
-// 			);
-// 			removeElement.innerHTML = "";
-// 			removeElement.remove();
-// 		});
-// 	});
-// }
-
 //Changing the read status
-// let changeStatusButtons = document.getElementsByClassName("changeStatusButton");
-// if (changeStatusButtons.length > 0) {
-// 	changeStatusButtons.forEach((button) => {
-// 		button.addEventListener("click", function (e) {
-// 			changeReadStatus(e);
-// 		});
-// 	});
-// }
 
 function changeReadStatus(event) {
-	let bookIndex = myLibrary.findIndex((book) => book.title === event.id.value);
-	let updateElement = document.querySelector(`.${event.title}.readStatus`);
-	if (event.read == true) {
+	let bookIndex = myLibrary.findIndex((book) => book.title === event.target.id);
+	let updateElement = document.querySelector(`.${event.target.id}.readStatus`);
+	if (myLibrary[bookIndex].read == true) {
 		myLibrary[bookIndex].read = false;
-		updateElement.textContent = `read: ${myLibrary[bookIndex].read.value}`;
+		updateElement.textContent = `read: ${myLibrary[bookIndex].read}`;
 	} else {
 		myLibrary[bookIndex].read = true;
-		updateElement.textContent = `read: ${myLibrary[bookIndex].read.value}`;
+		updateElement.textContent = `read: ${myLibrary[bookIndex].read}`;
 	}
 }
 
 //read status & remove button
 
-function addCustomEventListener(selector, event, handler) {
-	let rootElement = document.querySelector("body");
-	//since the root element is set to be body for our current dealings
-	rootElement.addEventListener(
-		event,
-		function (evt) {
-			var targetElement = evt.target;
-			while (targetElement != null) {
-				if (targetElement.matches(selector)) {
-					handler(evt);
-					return;
-				}
-				targetElement = targetElement.parentElement;
-			}
-		},
-		true
-	);
-}
+document.addEventListener("click", buttonListener);
 
-addCustomEventListener(".changeStatusButton", "click", changeReadStatus);
-addCustomEventListener(".removeBookButton", "click", removeBook);
+function buttonListener(event) {
+	var element = event.target;
+	if (element.classList.contains("removeBookButton")) {
+		removeBook(event);
+	} else if (element.classList.contains("changeStatusButton")) {
+		changeReadStatus(event);
+	} else {
+		return;
+	}
+}
 
 //testing
 addBookToLibrary("Bible", "Joe", 267, false);
