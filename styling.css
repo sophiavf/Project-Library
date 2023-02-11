@@ -79,26 +79,34 @@ h3 {
 	padding: 20px;
 	gap: 10px;
 }
-.buttons {
-	display: flex;
+div > button {
 	width: inherit;
 	justify-content: space-between;
-}
-.submitButton,
-.closeButton {
-	margin: 15px;
 }
 
 .buttons > button,
 .submitButton,
-.closeButton {
+.closeFormButton {
 	padding: 12px 32px;
 	border: none;
 	color: white;
 	background-color: #9df9ef;
 	border-radius: 15px;
-	align-self: center;
 	word-wrap: normal;
+}
+.buttons {
+	align-self: center;
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	width: inherit;
+	gap: 10px;
+}
+.buttons > button {
+	align-self: center;
+	flex: 1;
+	width: 15em;
+	text-align: center;
 }
 .label {
 	flex: 1 0 120px;
@@ -111,4 +119,8 @@ h3 {
 	background-color: #ffa8b6;
 	border-radius: 15px;
 	align-self: center;
+}
+
+input[type="checkbox"] {
+	accent-color: #51e2f5;
 }
