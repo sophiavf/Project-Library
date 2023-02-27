@@ -133,10 +133,10 @@ function changeReadStatus(event) {
 	let updateElement = document.querySelector(`.${event.target.id}.readStatus`);
 	if (myLibrary[bookIndex].read == true) {
 		myLibrary[bookIndex].read = false;
-		updateElement.textContent = `read: ${myLibrary[bookIndex].read}`;
+		updateElement.textContent = `Read: ${myLibrary[bookIndex].read}`;
 	} else {
 		myLibrary[bookIndex].read = true;
-		updateElement.textContent = `read: ${myLibrary[bookIndex].read}`;
+		updateElement.textContent = `Read: ${myLibrary[bookIndex].read}`;
 	}
 }
 
@@ -155,5 +155,3 @@ function buttonListener(event) {
 	}
 }
 
-//testing
-addBookToLibrary("Bible", "Joe", 267, false);
