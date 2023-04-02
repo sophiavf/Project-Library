@@ -1,10 +1,12 @@
-import library from "./library";
-import formValidation from "../utils/formValidation";
+import Library from "./Library";
+// import formValidation from "../utils/formValidation";
 
 const libraryDisplay = document.querySelector(".bookDisplay");
 //1. The'NEW BOOK' button brings up a form allowing users to input the details for the new book: author, title, number of pages,whether it’s been read and anything else you might want.
 const newBookButton = document.querySelector(".newBook");
 const popUpForm = document.querySelector(".formPopup");
+const submitButton = document.querySelector(".submitButton");
+const bodyTag = document.querySelector("body");
 
 function initializeListeners() {
 	//2. Brings up form
@@ -13,19 +15,26 @@ function initializeListeners() {
 	});
 	//3. User puts inputs into form
 	//4. User submits inputs
-	document
-		.querySelector(".submitButton")
-		.addEventListener("click", function (event) {
-			event.preventDefault();
-			getUserInput();
-			closePopUp();
-		});
+	submitButton.addEventListener("click", function (event) {
+		event.preventDefault();
+		getUserInput();
+		closePopUp();
+	});
+}
+
+function loadFooter() {
+	const currentYear = new Date().getFullYear();
+	const footer =  document.createElement("footer");
+	const footerContent = document.createElement("div");
+	footerContent.innerHTML = `Author: Sophia <a href="https://github.com/sophiavf">GitHub</a> &copy ${currentYear}`;
+	footer.appendChild(footerContent);
+	bodyTag.append(footer);
 }
 
 function displayBooks() {
 	libraryDisplay.innerHTML = "";
 	//Loops through books
-	library.myLibrary.forEach((book) => {
+	Library.myLibrary.forEach((book) => {
 		if (document.querySelector(`.${book.title}`) !== null) {
 			return;
 		} else {
@@ -96,14 +105,14 @@ function closePopUp() {
 
 function removeBook(event) {
 	let bookToRemove = event.target.id;
-	library.removeBookFromLibrary(bookToRemove);
+	Library.removeBookFromLibrary(bookToRemove);
 	displayBooks();
 }
 
 //Changing the read status
 function changeReadStatus(event) {
 	let bookToUpdate = event.target.id;
-	library.changeReadStatus(bookToUpdate);
+	Library.changeReadStatus(bookToUpdate);
 	displayBooks();
 }
 
@@ -122,4 +131,10 @@ function buttonListener(event) {
 	}
 }
 
-export default { initializeListeners };
+//Form validation logic
+
+function checkFormInput () {
+	if ()
+}
+
+export default { initializeListeners, loadFooter };

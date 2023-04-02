@@ -1,3 +1,6 @@
 import "./styling.css";
-import domManipulation from "./modules/domManipulation";
-domManipulation.initializeListeners();
+import DomManipulation from "./modules/DomManipulation";
+DomManipulation.initializeListeners();
+DomManipulation.loadFooter(); 
+
+
