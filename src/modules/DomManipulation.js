@@ -5,8 +5,14 @@ const libraryDisplay = document.querySelector(".bookDisplay");
 //1. The'NEW BOOK' button brings up a form allowing users to input the details for the new book: author, title, number of pages,whether it’s been read and anything else you might want.
 const newBookButton = document.querySelector(".newBook");
 const popUpForm = document.querySelector(".formPopup");
-const submitButton = document.querySelector(".submitButton");
+//const submitButton = document.querySelector(".submitButton");
+const form = document.querySelector("form");
 const bodyTag = document.querySelector("body");
+
+const title = document.querySelector("#title");
+const author = document.querySelector("#author");
+const pages = document.querySelector("#pages");
+const read = document.querySelector("#read");
 
 function initializeListeners() {
 	//2. Brings up form
@@ -15,8 +21,7 @@ function initializeListeners() {
 	});
 	//3. User puts inputs into form
 	//4. User submits inputs
-	submitButton.addEventListener("click", function (event) {
-		event.preventDefault();
+	form.addEventListener("submit", function () {
 		getUserInput();
 		closePopUp();
 	});
@@ -24,7 +29,7 @@ function initializeListeners() {
 
 function loadFooter() {
 	const currentYear = new Date().getFullYear();
-	const footer =  document.createElement("footer");
+	const footer = document.createElement("footer");
 	const footerContent = document.createElement("div");
 	footerContent.innerHTML = `Author: Sophia <a href="https://github.com/sophiavf">GitHub</a> &copy ${currentYear}`;
 	footer.appendChild(footerContent);
@@ -49,20 +54,23 @@ function displayBooks() {
 				"div"
 			).textContent = `containing ${book.pages} pages`);
 
-			let readElement = document.createElement("div");
-			readElement.classList.add(`${book.title}`, "readStatus");
-			readElement.textContent = `Read: ${book.read}`;
+			// let readElement = document.createElement("div");
+			// readElement.classList.add(`${book.title}`, "readStatus");
+			// readElement.textContent = `Read: ${book.read}`;
 
 			let removeBookButton = document.createElement("button");
 			removeBookButton.classList.add(`${book.title}`, "removeBookButton");
-			removeBookButton.textContent = "Remove book";
+			removeBookButton.innerHTML =
+				'<span class="material-symbols-outlined">delete</span>Remove book';
 
-			let changeReadStatusButton = document.createElement("button");
-			changeReadStatusButton.textContent = "Change read status";
+			let changeReadStatusButton = document.createElement("label");
 			changeReadStatusButton.classList.add(
 				"changeStatusButton",
-				`${book.title}`
+				`${book.title}`,
+				"toggle"
 			);
+			changeReadStatusButton.innerHTML =
+				'Read: <input id="readToggle" type="checkbox"><span class="slider round"></span>';
 
 			removeBookButton.setAttribute("id", `${book.title}`);
 			changeReadStatusButton.setAttribute("id", `${book.title}`);
@@ -81,17 +89,30 @@ function displayBooks() {
 			);
 			//Displays each book on the page
 			libraryDisplay.appendChild(newBookElement);
+			checkBoxConfig(`${book.title}`, book);
 		}
 	});
 }
 
+function checkBoxConfig(bookTitle, book) {
+	const bookReadToggle = document.querySelector(
+		`.changeStatusButton.${bookTitle}`
+	);
+	if (book.read === true) {
+		bookReadToggle.checked = true; 
+	} else {
+		bookReadToggle.checked = false; 
+	}
+}
+
 //5. Program takes user input from form and add's it to the library
 function getUserInput() {
-	let title = document.querySelector("#title").value;
-	let author = document.querySelector("#author").value;
-	let pages = document.querySelector("#pages").value;
-	let read = document.querySelector("#read").checked;
-	Library.addBookToLibrary(title, author, pages, read);
+	Library.addBookToLibrary(
+		title.value,
+		author.value,
+		pages.value,
+		read.checked
+	);
 	displayBooks();
 }
 
@@ -116,7 +137,7 @@ function changeReadStatus(event) {
 	displayBooks();
 }
 
-//read status & remove button
+//Read status & remove button
 
 document.addEventListener("click", buttonListener);
 
@@ -131,10 +152,30 @@ function buttonListener(event) {
 	}
 }
 
-//Form validation logic
-
-function checkFormInput () {
-	if ()
-}
+//Custom validationMessages
+//Title
+title.addEventListener("input", (event) => {
+	if (title.checkValidity()) {
+		title.setCustomValidity("");
+	} else {
+		title.setCustomValidity("Please provide a book title");
+	}
+});
+//Author
+author.addEventListener("input", (event) => {
+	if (author.checkValidity()) {
+		author.setCustomValidity("");
+	} else {
+		author.setCustomValidity("Please provide a book author");
+	}
+});
+//Pages
+pages.addEventListener("input", (event) => {
+	if (pages.checkValidity()) {
+		pages.setCustomValidity("");
+	} else {
+		pages.setCustomValidity("Please provide the number of pages");
+	}
+});
 
 export default { initializeListeners, loadFooter };

@@ -25,7 +25,7 @@
 				<form onsubmit="event.preventDefault()">
 					<h3>Please add your book:</h3>
 					<div>
-						<label for="title">Book title: </label>
+						<label for="title">*Book title: </label>
 						<input
 							type="text"
 							id="title"
@@ -33,11 +33,10 @@
 							name="title"
 							required
 							minlength="1"
-							;
 						/>
 					</div>
 					<div>
-						<label for="author">Author: </label>
+						<label for="author">*Author: </label>
 						<input
 							type="text"
 							id="author"
@@ -48,7 +47,7 @@
 						/>
 					</div>
 					<div>
-						<label for="pages">Pages:</label>
+						<label for="pages">*Pages: </label>
 						<input
 							type="number"
 							id="pages"
@@ -62,9 +61,9 @@
 						<label for="read">Have you read the book?<br /></label>
 						<input type="checkbox" id="read" name="read" value="read" />
 					</div>
+					<button type="submit" class="submitButton">Submit</button>
+					<button type="button" class="closeFormButton">Close</button>
 				</form>
-				<button type="submit" class="submitButton">Submit</button>
-				<button type="button" class="closeFormButton">Close</button>
 			</div>
 		</div>
 		<main>

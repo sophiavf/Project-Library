@@ -75,7 +75,7 @@ book
 
 [![Product Name Screen Shot][product-screenshot]](ttps://sophiavf.github.io/Project-Sign-Up-Form/)
 
-A simple website created for the [Library Project](https://www.theodinproject.com/lessons/node-path-javascript-library) on [The Odin Project](https://www.theodinproject.com/).
+A simple website created for the [Library Project](https://www.theodinproject.com/lessons/node-path-javascript-library) on [The Odin Project](https://www.theodinproject.com/) to add / remove books.
 
 <!-- Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description` -->
 
@@ -126,6 +126,7 @@ Use this space to show useful examples of how a project can be used. Additional 
 
 - [ ] Implement [form validation with Javascript](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation#validating_forms_using_javascript)
 - [ ] Add [local storage](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API)
+- [ ] Improve toggle read status DOM object
 
 See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
 
@@ -176,6 +177,13 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 - [Client-side form validation](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation#validating_forms_using_javascript)
 - [Constraint validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation)
 - [JavaScript Validation API](https://www.w3schools.com/js/js_validation_api.asp)
+
+
+### The Odin Project Resources
+
+- [Form Basics](https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-form-basics)
+- [Form Validation](https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-form-validation)
+- [Form Validation With JavaScript](https://www.theodinproject.com/lessons/node-path-javascript-form-validation-with-javascript)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

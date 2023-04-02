@@ -2,7 +2,7 @@
 * {
 	margin: 0;
 	padding: 0;
-	font-family: "Inter", sans-serif;
+	font-family: "Raleway", sans-serif;
 
 	--bright-pink: #ff414e;
 	--orange: #ff8928;
@@ -56,6 +56,22 @@ h1 {
 	margin-top: 50px;
 }
 
+.switch {
+	position: relative;
+	display: inline-block;
+	width: 60px;
+	height: 34px;
+}
+.switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.readToggle {
+	
+}
+
 form {
 	flex: 1;
 }
@@ -80,12 +96,16 @@ input {
 	padding-left: 10px;
 	padding-right: 10px;
 	border-radius: 4px;
-	border: none;
-	border: 1px solid var(--orange);
+	border: 2px solid;
+	border-color: var(--orange);
 	align-self: flex-start;
 	align-content: flex-start;
 	align-items: flex-start;
 	text-align: start;
+	outline: none;
+}
+input:focus {
+	border-color: var(--bright-pink);
 }
 
 h3 {
@@ -99,6 +119,10 @@ h3 {
 	gap: 15px;
 	margin-top: 30px;
 	justify-content: center;
+}
+.bookContainer {
+	color: var(--bright-pink);
+	font-weight: 300;
 }
 
 .bookDisplay > div {
@@ -138,6 +162,7 @@ h3 {
 	align-self: center;
 	flex: 1;
 	text-align: center;
+	width: 100%;
 }
 button:active {
 	box-shadow: 0 5px var(--yellow);
@@ -163,8 +188,8 @@ button.newBook {
 }
 
 input[type="checkbox"] {
-	accent-color: var(--orange);
-	border: 3px solid var(--white);
+	accent-color: var(--bright-pink);
+	border: none;
 }
 
 footer {
