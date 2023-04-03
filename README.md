@@ -22,9 +22,7 @@ https://github.com/othneildrew/Best-README-Template/blob/master/README.md
 <br />
 <div align="center">
   <a href="https://github.com/sophiavf/Project-Library">
-    <span class="material-symbols-outlined" style="font-size:68px; color:#ff414e;">
-book
-</span>
+    <img src="Images/icons8-open-book-96.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Project: Library</h3>
@@ -111,14 +109,14 @@ To get a local copy up and running follow these simple steps.
    npm install
    ```
 3. Run the development server to start a local demo of the project
-  ```sh
-  npm start
-  ```
+   ```sh
+   npm start
+   ```
 
 4. Distribution files can be produced using the command
-  ```sh
-  npm run build
-  ```
+   ```sh
+   npm run build
+   ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
