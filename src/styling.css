@@ -37,59 +37,104 @@ h1 {
 }
 
 .popUp {
-	position: relative;
+	position: absolute;
 	text-align: center;
 	width: 100%;
 }
 
 .formPopup {
 	display: none;
-	position: absolute;
+	position: relative;
 	left: 50%;
 	margin-left: -200px;
-	border: 3px solid var(--white);
+	border: 3px solid var(--orange);
 	background-color: white;
 	width: 400px;
 	padding: 20px;
 	border-radius: 15px;
-
 	margin-top: 50px;
+	text-align: start;
 }
 
+.changeReadStatus {
+	display: flex;
+	align-items: center;
+}
+
+.changeReadStatus > div {
+	flex: 1;
+}
+
+/* The switch - the box around the slider */
 .switch {
 	position: relative;
+	right: 0px;
 	display: inline-block;
 	width: 60px;
 	height: 34px;
 }
+/* Hide default HTML checkbox */
 .switch input {
 	opacity: 0;
 	width: 0;
 	height: 0;
 }
+/* The slider */
+.slider {
+	position: relative;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: var(--yellow);
+	-webkit-transition: 0.4s;
+	transition: 0.4s;
+}
 
-.readToggle {
-	
+.slider:before {
+	position: relative;
+	content: "";
+	height: 26px;
+	width: 26px;
+	left: 4px;
+	bottom: 4px;
+	background-color: white;
+	-webkit-transition: 0.4s;
+	transition: 0.4s;
+}
+
+input:checked + .slider {
+	background-color: var(--orange);
+}
+
+input:focus + .slider {
+	box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+	-webkit-transform: translateX(26px);
+	-ms-transform: translateX(26px);
+	transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+	border-radius: 34px;
+}
+
+.slider.round:before {
+	border-radius: 50%;
 }
 
 form {
 	flex: 1;
 }
 
-form > div {
-	display: flex;
-	padding: 10px 0;
-	align-items: center;
-}
 
-div > label {
-	flex: 1 0 120px;
-	max-width: 220px;
-	text-align: left;
-	font-weight: 500;
-}
-input {
-	flex: 1 0 220px;
+
+.inputItem > input {
+	flex: 1; 
 	background: var(--white);
 	color: var(--orange);
 	height: 34px;
@@ -98,12 +143,20 @@ input {
 	border-radius: 4px;
 	border: 2px solid;
 	border-color: var(--orange);
-	align-self: flex-start;
-	align-content: flex-start;
-	align-items: flex-start;
 	text-align: start;
 	outline: none;
+	max-width: 280px;
+	width: fit-content;
 }
+
+.inputItem {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+	margin: 10px; 
+}
+
 input:focus {
 	border-color: var(--bright-pink);
 }
@@ -120,10 +173,6 @@ h3 {
 	margin-top: 30px;
 	justify-content: center;
 }
-.bookContainer {
-	color: var(--bright-pink);
-	font-weight: 300;
-}
 
 .bookDisplay > div {
 	display: flex;
@@ -134,23 +183,20 @@ h3 {
 	padding: 20px;
 	gap: 10px;
 	background-color: var(--white);
-	color: var(--orange);
+	color: black;
+	font-weight: 600;
 }
-/* div > button {
-	 width: 100%; 
-	justify-content: space-between;
-} */
 
 .buttons > button,
 .submitButton,
 .closeFormButton {
-	padding: 12px 32px;
+	padding: 10px;
 	border: none;
 	color: white;
 	background-color: var(--orange);
 	border-radius: 15px;
 	word-wrap: normal;
-}
+} 
 .buttons {
 	align-self: center;
 	display: flex;
@@ -163,17 +209,31 @@ h3 {
 	flex: 1;
 	text-align: center;
 	width: 100%;
+	font-weight: 600;
 }
+
+.popupButtons {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+}
+.popupButtons > button {	
+	min-width: 8em;
+}
+
 button:active {
 	box-shadow: 0 5px var(--yellow);
 	transform: translateY(4px);
 }
 
+.inputContainer {
+	display: flex;
+	justify-content: space-between;
+}
+
 button {
 	box-shadow: 0 9px var(--white);
-}
-.label {
-	flex: 1 0 120px;
 }
 
 button.newBook {

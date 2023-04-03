@@ -45,63 +45,39 @@ function displayBooks() {
 		} else {
 			let newBookElement = document.createElement("div");
 			newBookElement.classList.add(`${book.title}`, "bookContainer");
-			let titleElement = (document.createElement("div").textContent =
-				book.title);
-			let authorElement = (document.createElement(
-				"div"
-			).textContent = ` written by ${book.author} `);
-			let pageElement = (document.createElement(
-				"div"
-			).textContent = `containing ${book.pages} pages`);
 
-			// let readElement = document.createElement("div");
-			// readElement.classList.add(`${book.title}`, "readStatus");
-			// readElement.textContent = `Read: ${book.read}`;
+			newBookElement.innerHTML = `<div>${book.title} <br>Author: ${book.author} <br>Page(s): ${book.pages}</div>`;
 
 			let removeBookButton = document.createElement("button");
 			removeBookButton.classList.add(`${book.title}`, "removeBookButton");
 			removeBookButton.innerHTML =
 				'<span class="material-symbols-outlined">delete</span>Remove book';
-
-			let changeReadStatusButton = document.createElement("label");
-			changeReadStatusButton.classList.add(
-				"changeStatusButton",
-				`${book.title}`,
-				"toggle"
-			);
-			changeReadStatusButton.innerHTML =
-				'Read: <input id="readToggle" type="checkbox"><span class="slider round"></span>';
-
 			removeBookButton.setAttribute("id", `${book.title}`);
-			changeReadStatusButton.setAttribute("id", `${book.title}`);
+
+			let readElement = document.createElement("div");
+			readElement.classList.add("changeReadStatus");
+			readElement.innerHTML = `<div>Read: </div> <label id="#${book.title}" class="switch"><input class="readToggle" id='${book.title}' type="checkbox"><span class="slider round"></span></label>`;
+
+			readElement.setAttribute("id", `${book.title}`);
 
 			let buttons = document.createElement("div");
 			buttons.classList.add("buttons");
+			buttons.append(readElement, removeBookButton);
 
-			buttons.append(removeBookButton, changeReadStatusButton);
-
-			newBookElement.append(
-				titleElement,
-				authorElement,
-				pageElement,
-				readElement,
-				buttons
-			);
+			newBookElement.appendChild(buttons);
 			//Displays each book on the page
 			libraryDisplay.appendChild(newBookElement);
-			checkBoxConfig(`${book.title}`, book);
+			checkBoxConfig(book);
 		}
 	});
 }
-
-function checkBoxConfig(bookTitle, book) {
-	const bookReadToggle = document.querySelector(
-		`.changeStatusButton.${bookTitle}`
-	);
+//Changes the checkbox status of the newly created book element based on what is stored in the object
+function checkBoxConfig(book) {
+	const bookReadToggle = document.querySelector(`input#${book.title}`);
 	if (book.read === true) {
-		bookReadToggle.checked = true; 
+		bookReadToggle.checked = true;
 	} else {
-		bookReadToggle.checked = false; 
+		bookReadToggle.checked = false;
 	}
 }
 
@@ -132,21 +108,25 @@ function removeBook(event) {
 
 //Changing the read status
 function changeReadStatus(event) {
-	let bookToUpdate = event.target.id;
-	Library.changeReadStatus(bookToUpdate);
-	displayBooks();
+	if (event.target.classList.contains("readToggle")) {
+		let bookToUpdate = event.target.id;
+		Library.changeReadStatus(bookToUpdate);
+		displayBooks();
+	} else {
+		return;
+	}
 }
 
 //Read status & remove button
 
 document.addEventListener("click", buttonListener);
+document.addEventListener("change", changeReadStatus);
 
 function buttonListener(event) {
 	var element = event.target;
 	if (element.classList.contains("removeBookButton")) {
 		removeBook(event);
-	} else if (element.classList.contains("changeStatusButton")) {
-		changeReadStatus(event);
+		displayBooks();
 	} else {
 		return;
 	}
@@ -178,4 +158,4 @@ pages.addEventListener("input", (event) => {
 	}
 });
 
-export default { initializeListeners, loadFooter };
+export default { initializeListeners, loadFooter, displayBooks };

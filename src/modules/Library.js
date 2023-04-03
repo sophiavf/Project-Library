@@ -19,16 +19,21 @@ function addBookToLibrary(title, author, pages, read) {
 }
 
 function removeBookFromLibrary(bookToRemove) {
-	myLibrary.filter((book) => book.title !== bookToRemove);
+	let bookIndex = getBookIndex(bookToRemove);
+	myLibrary.splice(bookIndex, 1);
 }
 
 function changeReadStatus(bookToUpdate) {
-	let bookIndex = myLibrary.findIndex((book) => book.title === bookToUpdate);
+	let bookIndex = getBookIndex(bookToUpdate);
 	if (myLibrary[bookIndex].read == true) {
 		myLibrary[bookIndex].read = false;
 	} else {
 		myLibrary[bookIndex].read = true;
 	}
+}
+
+function getBookIndex(bookToFind) {
+	return myLibrary.findIndex((book) => book.title === bookToFind);
 }
 
 export default {

@@ -4,7 +4,7 @@
 
 <a name="readme-top"></a>
 
-<!-- Template: 
+<!-- Template:
 https://github.com/othneildrew/Best-README-Template/blob/master/README.md
 -->
 
@@ -110,6 +110,15 @@ To get a local copy up and running follow these simple steps.
    ```sh
    npm install
    ```
+3. Run the development server to start a local demo of the project
+  ```sh
+  npm start
+  ```
+
+4. Distribution files can be produced using the command
+  ```sh
+  npm run build
+  ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -124,9 +133,11 @@ Use this space to show useful examples of how a project can be used. Additional 
 
 ## Roadmap
 
-- [ ] Implement [form validation with Javascript](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation#validating_forms_using_javascript)
+- [x] Implement [form validation with Javascript](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation#validating_forms_using_javascript)
+- [x] Improve toggle read status DOM object
 - [ ] Add [local storage](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API)
-- [ ] Improve toggle read status DOM object
+- [ ] Enable users to drag and reorder books
+- [ ] Enable users to edit book information
 
 See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
 
@@ -164,20 +175,19 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-[![Twitter][twitter-shield]][twitter-URL]
+[![Twitter][twitter-shield]][twitter-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ACKNOWLEDGMENTS -->
 
-## Acknowledgments 
+## Acknowledgments
 
 - [Form Validation
   Intermediate HTML and CSS Course](https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-form-validation)
 - [Client-side form validation](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation#validating_forms_using_javascript)
 - [Constraint validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation)
 - [JavaScript Validation API](https://www.w3schools.com/js/js_validation_api.asp)
-
 
 ### The Odin Project Resources
 
@@ -199,6 +209,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [product-screenshot]: Images/Your-book-library.png
 
 <!-- Technologies -->
+
 [html5]: https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white
 [css]: https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white
 [js]: https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E
