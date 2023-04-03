@@ -28,7 +28,7 @@ https://github.com/othneildrew/Best-README-Template/blob/master/README.md
 <h3 align="center">Project: Library</h3>
 
   <p align="center">
-    A simple library website to add / remove books
+    A simple library website to add / remove books with basic form validation 
     <br />
     <!-- <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a> -->
     <br />
