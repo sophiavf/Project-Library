@@ -84,6 +84,7 @@ A simple website created for the [Library Project](https://www.theodinproject.co
 - ![HTML5][html5]
 - ![CSS3][css]
 - ![JavaScript][js]
+- ![webpack][WebPack]
 
 <!-- GETTING STARTED -->
 
@@ -211,6 +212,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [html5]: https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white
 [css]: https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white
 [js]: https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E
+[webpack]: https://img.shields.io/badge/Webpack-%238DD6F9.svg?style=for-the-badge&logo=Webpack&logoColor=%234285F4
 [next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [next-url]: https://nextjs.org/
 [react.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
