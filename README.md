@@ -71,7 +71,7 @@ https://github.com/othneildrew/Best-README-Template/blob/master/README.md
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](ttps://sophiavf.github.io/Project-Sign-Up-Form/)
+[![Product Name Screen Shot][product-screenshot]](ttps://sophiavf.github.io/Project-Library/)
 
 A simple website created for the [Library Project](https://www.theodinproject.com/lessons/node-path-javascript-library) on [The Odin Project](https://www.theodinproject.com/) to add / remove books.
 
