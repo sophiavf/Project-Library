@@ -56,9 +56,8 @@ function displayBooks() {
 
 			let readElement = document.createElement("div");
 			readElement.classList.add("changeReadStatus");
-			readElement.innerHTML = `<div>Read: </div> <label id="#${book.title}" class="switch"><input class="readToggle" id='${book.title}' type="checkbox"><span class="slider round"></span></label>`;
-
 			readElement.setAttribute("id", `${book.title}`);
+			readElement.innerHTML = `<div>Read: </div><label id="#${book.title}" class="switch"><input class="readToggle" id="${book.title}" type="checkbox" /><span class="slider round"></span></label>`;
 
 			let buttons = document.createElement("div");
 			buttons.classList.add("buttons");
